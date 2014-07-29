@@ -45,4 +45,4 @@ RUN chmod 755 run.sh
 EXPOSE 3306
 EXPOSE 80
 
-CMD ["/bin/bash", "/start.sh"]
+CMD ["/bin/bash", "/run.sh"]
