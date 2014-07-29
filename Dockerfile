@@ -8,7 +8,7 @@ RUN ln -sf /bin/true /sbin/initctl
 RUN apt-get update
 
 # Requirements
-RUN DEBIAN_FRONTEND noninteractive apt-get -y install mysql-server mysql-client nginx php5-fpm php5-mysql php-apc pwgen python-setuptools curl git unzip php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-sqlite php5-tidy php5-xmlrpc php5-xsl
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server mysql-client nginx php5-fpm php5-mysql php-apc pwgen python-setuptools curl git unzip php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-sqlite php5-tidy php5-xmlrpc php5-xsl
 
 # mysql config
 RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
@@ -38,7 +38,7 @@ ADD supervisord.conf /etc/supervisord.conf
 RUN mkdir /web
 RUN chown www-data: /web
 
-ADD run.sh
+ADD run.sh /
 RUN chmod 755 run.sh
 
 # expose
