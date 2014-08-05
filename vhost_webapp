@@ -1,16 +1,17 @@
 server {
     listen 80 default_server;
-    root /web/web;
-    index app_dev.php;
+    root /web;
+    index index.php;
     access_log /var/log/nginx/webapp-access.log;
     error_log /var/log/nginx/webapp-error.log;
     location / {
         try_files $uri @rewriteapp;
     }
     location @rewriteapp {
-        rewrite ^(.*)$ /app_dev.php/$1 last;
+        rewrite ^(.*)$ /index.php/$1 last;
     }
-    location ~ ^/(index|app|app_dev|config)\.php(/|$) {
+    \.php
+    location ~ \.php(/|$) {
         fastcgi_pass unix:/var/run/php5-fpm.sock;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
         include fastcgi_params;

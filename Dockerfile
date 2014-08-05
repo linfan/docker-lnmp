@@ -42,7 +42,6 @@ ADD run.sh /
 RUN chmod 755 run.sh
 
 # expose
-EXPOSE 3306
 EXPOSE 80
 
 CMD ["/bin/bash", "/run.sh"]
